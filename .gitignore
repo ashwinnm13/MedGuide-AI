@@ -216,3 +216,38 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# ===========================
+# Frontend (React/Vite)
+# ===========================
+frontend/node_modules/
+frontend/dist/
+
+# Vite cache
+frontend/.vite/
+
+# ===========================
+# ChromaDB
+# ===========================
+backend/data/chroma_db/
+
+# Processed artifacts (optional)
+backend/data/processed/*.json
+
+# Raw guideline PDFs (optional)
+# Uncomment if you don't want to commit PDFs
+# backend/data/raw_guidelines/
+
+# ===========================
+# IDE
+# ===========================
+.vscode/
+.idea/
+
+# ===========================
+# macOS
+# ===========================
+.DS_Store
+
+# Windows
+Thumbs.db
