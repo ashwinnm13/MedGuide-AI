@@ -1,7 +1,13 @@
+import logging
+
+from app.core.config import settings
 from langchain_ollama import OllamaEmbeddings
 
+logger = logging.getLogger(__name__)
+
 embeddings = OllamaEmbeddings(
-    model="nomic-embed-text"
+    model=settings.embed_model or settings.model_name,
+    base_url=settings.ollama_base_url,
 )
 
 
@@ -13,10 +19,10 @@ def embed_text(text: str):
 
 
 if __name__ == "__main__":
-    sample_text = "Hypertension is managed using ACE inhibitors."
+    logger.info("Embedding sample text using model=%s", settings.embed_model or settings.model_name)
 
+    sample_text = "Hypertension is managed using ACE inhibitors."
     vector = embed_text(sample_text)
 
-    print(f"Embedding Dimension: {len(vector)}")
-    print("\nFirst 10 values:")
-    print(vector[:10])
+    logger.info("Embedding Dimension: %d", len(vector))
+    logger.info("First 10 values: %s", vector[:10])
