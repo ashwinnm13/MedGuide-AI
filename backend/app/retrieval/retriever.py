@@ -2,6 +2,10 @@ from app.ingest.embedder import embed_text
 from app.retrieval.search import similarity_search
 
 
+def similarity_score(distance: float) -> float:
+    return round(1 - distance, 4)
+
+
 def retrieve(query: str, top_k: int = 5):
     query_embedding = embed_text(query)
     results = similarity_search(query_embedding=query_embedding, top_k=top_k)
@@ -24,9 +28,13 @@ def retrieve(query: str, top_k: int = 5):
 
         metadata.pop("filename", None)
 
+        distance = results["distances"][0][i]
+        score = similarity_score(distance)
+        print(f"Distance: {distance:.4f} -> Score: {score:.4f}")
+
         chunk = {
             "text": results["documents"][0][i],
-            "score": 1 - results["distances"][0][i],  # similarity approximation
+            "score": score,
         }
         chunk.update(metadata)
         retrieved_chunks.append(chunk)

@@ -14,7 +14,6 @@ router = APIRouter()
     response_model=RetrieveResponse,
 )
 def retrieve_documents(request: RetrieveRequest):
-
     results = retrieve(
         query=request.query,
         top_k=request.top_k,

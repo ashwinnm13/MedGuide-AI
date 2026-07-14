@@ -1,6 +1,8 @@
 from __future__ import annotations
 
 import logging
+from pathlib import Path
+
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
@@ -8,7 +10,7 @@ class Settings(BaseSettings):
     ollama_base_url: str | None = None
     model_name: str = "nomic-embed-text"
     embed_model: str = "nomic-embed-text"
-    chroma_path: str = "data/chroma_db"
+    chroma_path: str = str(Path(__file__).resolve().parents[2] / "data" / "chroma_db")
     chunk_size: int = 1000
     chunk_overlap: int = 200
     log_level: str = "INFO"
