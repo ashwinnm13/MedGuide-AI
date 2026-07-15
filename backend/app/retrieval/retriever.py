@@ -1,4 +1,5 @@
 from app.ingest.embedder import embed_text
+from app.retrieval.metadata_registry import get_document_metadata
 from app.retrieval.search import similarity_search
 
 
@@ -15,6 +16,10 @@ def retrieve(query: str, top_k: int = 5):
     for i in range(len(results["documents"][0])):
         metadata = dict(results["metadatas"][0][i])
 
+        if "document" in metadata:
+            registry_metadata = get_document_metadata(metadata.get("document"))
+            metadata.update(registry_metadata)
+
         if "title" not in metadata:
             if "filename" in metadata:
                 metadata["title"] = metadata["filename"].rsplit(".", 1)[0].replace("_", " ").title()
@@ -24,9 +29,13 @@ def retrieve(query: str, top_k: int = 5):
                 metadata["title"] = "Untitled document"
 
         if "title" in metadata and isinstance(metadata["title"], str):
-            metadata["title"] = metadata["title"].replace("Cdc", "CDC")
-
-        metadata.pop("filename", None)
+            title = metadata["title"]
+            if title.lower().startswith("2022 cdc"):
+                metadata["title"] = title
+            else:
+                metadata["title"] = title.replace("_", " ")
+                metadata["title"] = metadata["title"].replace("Cdc", "CDC")
+                metadata["title"] = metadata["title"].replace("cdc", "CDC")
 
         distance = results["distances"][0][i]
         score = similarity_score(distance)
@@ -34,11 +43,13 @@ def retrieve(query: str, top_k: int = 5):
 
         chunk = {
             "text": results["documents"][0][i],
-            "score": score,
+            "semantic_score": score,
+            "bm25_score": 0.0,
+            "final_score": score,
         }
         chunk.update(metadata)
         retrieved_chunks.append(chunk)
 
-    retrieved_chunks.sort(key=lambda x: x["score"], reverse=True)
+    retrieved_chunks.sort(key=lambda x: x["final_score"], reverse=True)
 
     return retrieved_chunks

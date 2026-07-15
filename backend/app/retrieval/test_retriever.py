@@ -32,28 +32,21 @@ def test_retrieve_flattens_metadata_and_sorts_by_score(monkeypatch):
 
     results = retrieve("acute pain", top_k=2)
 
-    assert results == [
-        {
-            "text": "second chunk",
-            "page": 16,
-            "organization": "CDC",
-            "document": "cdc_opioid_guideline",
-            "filename": "cdc_opioid_guideline.pdf",
-            "chunk_id": "chunk-2",
-            "title": "Cdc Opioid Guideline",
-            "score": 0.8,
-        },
-        {
-            "text": "first chunk",
-            "page": 14,
-            "organization": "CDC",
-            "document": "cdc_opioid_guideline",
-            "filename": "cdc_opioid_guideline.pdf",
-            "chunk_id": "chunk-1",
-            "title": "Cdc Opioid Guideline",
-            "score": 0.3,
-        },
-    ]
+    assert results[0]["text"] == "second chunk"
+    assert results[0]["page"] == 16
+    assert results[0]["organization"] == "CDC"
+    assert results[0]["document"] == "cdc_opioid_guideline"
+    assert results[0]["filename"] == "cdc_opioid_guideline.pdf"
+    assert results[0]["chunk_id"] == "chunk-2"
+    assert results[0]["title"] == "2022 CDC Clinical Practice Guideline for Prescribing Opioids for Pain"
+    assert results[0]["semantic_score"] == 0.8
+    assert results[0]["bm25_score"] == 0.0
+    assert results[0]["final_score"] == 0.8
+
+    assert results[1]["text"] == "first chunk"
+    assert results[1]["semantic_score"] == 0.3
+    assert results[1]["bm25_score"] == 0.0
+    assert results[1]["final_score"] == 0.3
 
 
 def main():

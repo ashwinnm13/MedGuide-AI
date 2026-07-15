@@ -12,7 +12,9 @@ class RetrievedChunk(BaseModel):
     organization: str
     page: int
     chunk_id: str
-    score: float
+    semantic_score: float
+    bm25_score: float
+    final_score: float
     text: str
 
 
