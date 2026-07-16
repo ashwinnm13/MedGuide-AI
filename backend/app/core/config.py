@@ -10,6 +10,9 @@ class Settings(BaseSettings):
     ollama_base_url: str | None = None
     model_name: str = "nomic-embed-text"
     embed_model: str = "nomic-embed-text"
+    openrouter_api_key: str | None = None
+    openrouter_base_url: str | None = "https://openrouter.ai/api/v1"
+    openrouter_model: str | None = None
     chroma_path: str = str(Path(__file__).resolve().parents[2] / "data" / "chroma_db")
     chunk_size: int = 1000
     chunk_overlap: int = 200

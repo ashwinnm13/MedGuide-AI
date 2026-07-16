@@ -6,6 +6,21 @@ class RetrieveRequest(BaseModel):
     top_k: int = 5
 
 
+class ChatRequest(BaseModel):
+    query: str
+    top_k: int = 5
+
+
+class SourceItem(BaseModel):
+    title: str
+    page: int | None = None
+
+
+class ChatResponse(BaseModel):
+    answer: str
+    sources: list[SourceItem]
+
+
 class RetrievedChunk(BaseModel):
     title: str
     document: str
