@@ -19,6 +19,7 @@ class SourceItem(BaseModel):
 class ChatResponse(BaseModel):
     answer: str
     sources: list[SourceItem]
+    verification: dict | None = None
 
 
 class RetrievedChunk(BaseModel):

@@ -37,9 +37,10 @@ def _normalize_answer_text(answer: object) -> str:
     return str(answer)
 
 
-def generate_answer(query: str) -> str:
+def generate_answer(query: str, retrieved_chunks: list[dict] | None = None) -> str:
     """Retrieve context, build a grounded prompt, and generate an answer."""
-    retrieved_chunks = hybrid_retrieve(query=query, top_k=5)
+    if retrieved_chunks is None:
+        retrieved_chunks = hybrid_retrieve(query=query, top_k=5)
     texts = [chunk.get("text", "") for chunk in retrieved_chunks if chunk.get("text")]
 
     prompt = build_prompt(texts, query)

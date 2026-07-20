@@ -3,6 +3,7 @@ from __future__ import annotations
 from app.graph.state import GraphState
 from app.llm.generator import generate_answer
 from app.retrieval.hybrid_retriever import hybrid_retrieve
+from app.verification import verify_answer
 
 
 def retrieve_node(state: GraphState) -> dict:
@@ -22,11 +23,18 @@ def generate_node(state: GraphState) -> dict:
 
 def verify_node(state: GraphState) -> dict:
     """Validate the generated answer and copy the final answer/sources."""
+    query = state.get("query", "")
     answer = state.get("generated_answer", "")
     retrieved_chunks = state.get("retrieved_chunks", [])
 
+    verification_result = verify_answer(
+        question=query,
+        answer=answer,
+        retrieved_chunks=retrieved_chunks,
+    )
+
     return {
-        "verification": "passed" if answer else "failed",
+        "verification": verification_result,
         "answer": answer,
         "sources": [
             {

@@ -39,22 +39,19 @@ def retrieve_documents(request: RetrieveRequest):
     return {"results": results}
 
 
+from app.graph.workflow import graph
+
+
 @router.post(
     "/chat",
     response_model=ChatResponse,
 )
 def chat(request: ChatRequest):
-    answer = generate_answer(request.query)
-    results = hybrid_retrieve(query=request.query, top_k=request.top_k)
+    result = graph.invoke({"query": request.query})
 
-    sources = [
-        {
-            "title": str(chunk.get("title") or "Untitled document"),
-            "page": chunk.get("page"),
-        }
-        for chunk in results
-        if isinstance(chunk, dict)
-    ]
+    answer = result.get("answer", "")
+    sources = result.get("sources", [])
+    verification = result.get("verification")
 
     logger.info(
         "Chat request completed",
@@ -66,4 +63,8 @@ def chat(request: ChatRequest):
         },
     )
 
-    return {"answer": answer, "sources": sources}
+    return {
+        "answer": answer,
+        "sources": sources,
+        "verification": verification,
+    }

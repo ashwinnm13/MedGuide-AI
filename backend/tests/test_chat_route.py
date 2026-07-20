@@ -5,25 +5,19 @@ from app.schemas.retrieval import ChatRequest
 def test_chat_returns_answer_and_sources(monkeypatch):
     captured = {}
 
-    def fake_generate_answer(query):
-        captured["query"] = query
-        return "Acute pain is short-term pain."
+    class FakeGraph:
+        def invoke(self, state):
+            captured["query"] = state.get("query")
+            return {
+                "answer": "Acute pain is short-term pain.",
+                "sources": [
+                    {"title": "CDC guidance", "page": 18},
+                    {"title": "Another guide", "page": 22},
+                ],
+                "verification": {"supported": True, "reason": "Test verified."}
+            }
 
-    def fake_hybrid(query, top_k):
-        captured["top_k"] = top_k
-        return [
-            {
-                "title": "CDC guidance",
-                "page": 18,
-            },
-            {
-                "title": "Another guide",
-                "page": 22,
-            },
-        ]
-
-    monkeypatch.setattr("app.api.routes.generate_answer", fake_generate_answer)
-    monkeypatch.setattr("app.api.routes.hybrid_retrieve", fake_hybrid)
+    monkeypatch.setattr("app.api.routes.graph", FakeGraph())
 
     response = chat(ChatRequest(query="What is acute pain?", top_k=2))
 
@@ -33,5 +27,6 @@ def test_chat_returns_answer_and_sources(monkeypatch):
             {"title": "CDC guidance", "page": 18},
             {"title": "Another guide", "page": 22},
         ],
+        "verification": {"supported": True, "reason": "Test verified."}
     }
-    assert captured == {"query": "What is acute pain?", "top_k": 2}
+    assert captured == {"query": "What is acute pain?"}

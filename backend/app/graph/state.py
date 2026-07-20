@@ -9,5 +9,5 @@ class GraphState(TypedDict, total=False):
     generated_answer: str
     answer: str
     sources: list[dict]
-    verification: str
+    verification: dict
     error: str
