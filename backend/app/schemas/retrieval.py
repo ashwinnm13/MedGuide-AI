@@ -14,6 +14,8 @@ class ChatRequest(BaseModel):
 class SourceItem(BaseModel):
     title: str
     page: int | None = None
+    url: str | None = None
+    source_type: str = "local"
 
 
 class ChatResponse(BaseModel):

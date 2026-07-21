@@ -49,3 +49,22 @@ def generate_answer(query: str, retrieved_chunks: list[dict] | None = None) -> s
         return _normalize_answer_text(generate_from_openrouter(prompt))
     except Exception:
         return _normalize_answer_text(generate_from_ollama(prompt))
+
+
+def generate_from_web(query: str, web_results: list[dict]) -> str:
+    """Generate an answer using web search results as context."""
+    from app.websearch.prompt import WEB_SEARCH_PROMPT
+
+    formatted_results = "\n\n".join(
+        f"Source: {r.get('title', 'Unknown')}\n"
+        f"URL: {r.get('url', '')}\n"
+        f"Content: {r.get('content', '')}"
+        for r in web_results
+    )
+
+    prompt = WEB_SEARCH_PROMPT.format(query=query, results=formatted_results)
+
+    try:
+        return _normalize_answer_text(generate_from_openrouter(prompt))
+    except Exception:
+        return _normalize_answer_text(generate_from_ollama(prompt))
