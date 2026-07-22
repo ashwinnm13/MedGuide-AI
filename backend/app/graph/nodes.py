@@ -5,6 +5,7 @@ from app.llm.generator import generate_answer, generate_from_web
 from app.retrieval.hybrid_retriever import hybrid_retrieve
 from app.verification import verify_answer
 from app.websearch.search import web_search
+from app.citation.formatter import attach_citations
 
 
 def web_search_node(state: GraphState) -> GraphState:
@@ -44,21 +45,6 @@ def verify_node(state: GraphState) -> dict:
     retrieved_chunks = state.get("retrieved_chunks", [])
     web_results = state.get("web_results", [])
 
-    # Build context for verification from whichever source was used
-    if route == "web" and web_results:
-        verification_chunks = [
-            {"text": r.get("content", ""), "title": r.get("title", "")}
-            for r in web_results
-        ]
-    else:
-        verification_chunks = retrieved_chunks
-
-    verification_result = verify_answer(
-        question=query,
-        answer=answer,
-        retrieved_chunks=verification_chunks,
-    )
-
     # Build sources from the appropriate path
     if route == "web" and web_results:
         sources = [
@@ -80,8 +66,26 @@ def verify_node(state: GraphState) -> dict:
             if isinstance(chunk, dict)
         ]
 
+    # Attach citations
+    cited_answer = attach_citations(answer, sources)
+
+    # Build context for verification from whichever source was used
+    if route == "web" and web_results:
+        verification_chunks = [
+            {"text": r.get("content", ""), "title": r.get("title", "")}
+            for r in web_results
+        ]
+    else:
+        verification_chunks = retrieved_chunks
+
+    verification_result = verify_answer(
+        question=query,
+        answer=cited_answer,
+        retrieved_chunks=verification_chunks,
+    )
+
     return {
         "verification": verification_result,
-        "answer": answer,
+        "answer": cited_answer,
         "sources": sources,
     }

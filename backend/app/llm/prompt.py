@@ -15,14 +15,20 @@ def build_prompt(retrieved_chunks: Sequence[str] | str, question: str) -> str:
     else:
         chunks = [chunk for chunk in retrieved_chunks if chunk]
 
-    context_parts = [chunk for chunk in chunks if chunk]
+    context_parts = []
+    for i, chunk in enumerate(chunks, 1):
+        if chunk:
+            context_parts.append(f"--- Source [{i}] ---\n{chunk}")
+            
     context_block = "\n\n".join(context_parts) if context_parts else "No supporting context provided."
 
     return (
         "You are MedGuide AI.\n\n"
+        "If the user asks about a condition or medical term, first define it based on the context before providing recommendations.\n"
         "Answer ONLY using the provided medical guideline context.\n"
         "Do not use outside knowledge or mention internal retrieval details.\n"
-        "Do not mention chunk numbers, chunk IDs, or 'Chunk 1'.\n"
+        "Cite the sources you use by appending their bracketed numbers at the end of the relevant sentences (e.g., [1], [2]).\n"
+        "Do not use phrases like 'Source [1] says'.\n"
         "Write a complete but concise answer that sounds like a clinical guideline response.\n"
         "Prefer a full sentence or two, not a bare phrase.\n"
         "If the context mentions a guideline title or source, include it naturally in the answer.\n"
