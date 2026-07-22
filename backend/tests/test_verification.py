@@ -128,4 +128,4 @@ def test_verify_node_execution(monkeypatch):
     res = verify_node(state)
     assert res["verification"] == {"supported": True, "reason": "Verified!"}
     assert res["answer"] == "Acute pain is pain."
-    assert res["sources"] == [{"title": "CDC Doc", "page": 10}]
+    assert res["sources"] == [{"title": "CDC Doc", "page": 10, "source_type": "local"}]

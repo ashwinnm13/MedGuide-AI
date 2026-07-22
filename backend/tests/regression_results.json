@@ -1,0 +1,242 @@
+[
+  {
+    "query": "acute pain",
+    "status": "PASS",
+    "checks": {
+      "has_answer": true,
+      "no_sources_in_answer": true,
+      "no_leaked_refs": true,
+      "has_sources": true,
+      "no_duplicate_sources": true,
+      "has_verification": true,
+      "no_spacing_artifacts": true
+    },
+    "answer_preview": "Acute pain is a sudden and temporary pain that typically lasts less than one month. Nonopioid therapies are at least as effective as opioids for many common types of acute pain, including low back pai",
+    "source_count": 2,
+    "verified": true
+  },
+  {
+    "query": "opioid tapering",
+    "status": "PASS",
+    "checks": {
+      "has_answer": true,
+      "no_sources_in_answer": true,
+      "no_leaked_refs": true,
+      "has_sources": true,
+      "no_duplicate_sources": true,
+      "has_verification": true,
+      "no_spacing_artifacts": true
+    },
+    "answer_preview": "Opioid tapering is the gradual reduction of opioid dosages over time in patients who have been taking them long-term, typically those with chronic pain. The goal of tapering is to minimize withdrawal ",
+    "source_count": 1,
+    "verified": true
+  },
+  {
+    "query": "recommendation 11",
+    "status": "PASS",
+    "checks": {
+      "has_answer": true,
+      "no_sources_in_answer": true,
+      "no_leaked_refs": true,
+      "has_sources": true,
+      "no_duplicate_sources": true,
+      "has_verification": true,
+      "no_spacing_artifacts": true
+    },
+    "answer_preview": "Recommendation 11 is rated as A, indicating a strong recommendation for the statement. The quality of evidence supporting this recommendation is II, which corresponds to one or more well-designed, non",
+    "source_count": 1,
+    "verified": true
+  },
+  {
+    "query": "pregnant women covid-19",
+    "status": "PASS",
+    "checks": {
+      "has_answer": true,
+      "no_sources_in_answer": true,
+      "no_leaked_refs": true,
+      "has_sources": true,
+      "no_duplicate_sources": true,
+      "has_verification": true,
+      "no_spacing_artifacts": true
+    },
+    "answer_preview": "Pregnant women with COVID-19 are more likely to experience stillbirth, neonatal death, and preterm birth compared to those without the disease. They also have a higher risk of severe illness, includin",
+    "source_count": 1,
+    "verified": true
+  },
+  {
+    "query": "chronic pain definition",
+    "status": "PASS",
+    "checks": {
+      "has_answer": true,
+      "no_sources_in_answer": true,
+      "no_leaked_refs": true,
+      "has_sources": true,
+      "no_duplicate_sources": true,
+      "has_verification": true,
+      "no_spacing_artifacts": true
+    },
+    "answer_preview": "Chronic pain refers to a type of persistent pain that lasts for more than three months, as defined in the 2022 CDC Clinical Practice Guideline for Prescribing Opioids for Pain [1, 4].",
+    "source_count": 5,
+    "verified": true
+  },
+  {
+    "query": "nonopioid therapies",
+    "status": "PASS",
+    "checks": {
+      "has_answer": true,
+      "no_sources_in_answer": true,
+      "no_leaked_refs": true,
+      "has_sources": true,
+      "no_duplicate_sources": true,
+      "has_verification": true,
+      "no_spacing_artifacts": true
+    },
+    "answer_preview": "Nonopioid therapies are at least as effective as opioids for many common types of acute pain, including low back pain, neck pain, other common musculoskeletal conditions, minor surgeries or dental pro",
+    "source_count": 3,
+    "verified": true
+  },
+  {
+    "query": "opioid dosage guidelines",
+    "status": "PASS",
+    "checks": {
+      "has_answer": true,
+      "no_sources_in_answer": true,
+      "no_leaked_refs": true,
+      "has_sources": true,
+      "no_duplicate_sources": true,
+      "has_verification": true,
+      "no_spacing_artifacts": true
+    },
+    "answer_preview": "When starting opioid therapy, clinicians should prescribe the lowest effective dosage. For patients not already taking opioids, the lowest effective dose can be determined using product labeling as a ",
+    "source_count": 4,
+    "verified": true
+  },
+  {
+    "query": "naloxone prescribing",
+    "status": "PASS",
+    "checks": {
+      "has_answer": true,
+      "no_sources_in_answer": true,
+      "no_leaked_refs": true,
+      "has_sources": true,
+      "no_duplicate_sources": true,
+      "has_verification": true,
+      "no_spacing_artifacts": true
+    },
+    "answer_preview": "Before starting and periodically during continuation of opioid therapy, clinicians should evaluate risk for opioid-related harms and discuss with patients the importance of having naloxone available. ",
+    "source_count": 1,
+    "verified": true
+  },
+  {
+    "query": "benzodiazepine and opioid",
+    "status": "PASS",
+    "checks": {
+      "has_answer": true,
+      "no_sources_in_answer": true,
+      "no_leaked_refs": true,
+      "has_sources": true,
+      "no_duplicate_sources": true,
+      "has_verification": true,
+      "no_spacing_artifacts": true
+    },
+    "answer_preview": "Benzodiazepines are a class of medications that include drugs such as alprazolam, clonazepam, diazepam, and lorazepam. They are central nervous system depressants used primarily to treat anxiety disor",
+    "source_count": 1,
+    "verified": true
+  },
+  {
+    "query": "urine drug testing",
+    "status": "PASS",
+    "checks": {
+      "has_answer": true,
+      "no_sources_in_answer": true,
+      "no_leaked_refs": true,
+      "has_sources": true,
+      "no_duplicate_sources": true,
+      "has_verification": true,
+      "no_spacing_artifacts": true
+    },
+    "answer_preview": "Although not specifically mentioned in this context, the presence of drugs or their metabolites in urine can be a sign of various conditions. However, no information is provided regarding specific tes",
+    "source_count": 5,
+    "verified": false
+  },
+  {
+    "query": "latest WHO guidelines on monkeypox 2025",
+    "status": "PASS",
+    "checks": {
+      "has_answer": true,
+      "no_sources_in_answer": true,
+      "no_leaked_refs": true,
+      "has_sources": true,
+      "no_duplicate_sources": true,
+      "has_verification": true,
+      "no_spacing_artifacts": true
+    },
+    "answer_preview": "The latest WHO guidelines on monkeypox (mpox) in 2025 do not recommend using tecovirimat as monotherapy for the treatment of mpox,. The World Health Organization's living guideline, Clinical managemen",
+    "source_count": 4,
+    "verified": true
+  },
+  {
+    "query": "new diabetes treatment breakthroughs",
+    "status": "PASS",
+    "checks": {
+      "has_answer": true,
+      "no_sources_in_answer": true,
+      "no_leaked_refs": true,
+      "has_sources": true,
+      "no_duplicate_sources": true,
+      "has_verification": true,
+      "no_spacing_artifacts": true
+    },
+    "answer_preview": "New diabetes treatment breakthroughs include:\n\n* A revolutionary approach to islet cell transplantation for type 1 diabetes that circumvents the need for immunosuppression, pioneered by Sana Biotechno",
+    "source_count": 5,
+    "verified": true
+  },
+  {
+    "query": "what is the current CDC guidance on RSV vaccines",
+    "status": "PASS",
+    "checks": {
+      "has_answer": true,
+      "no_sources_in_answer": true,
+      "no_leaked_refs": true,
+      "has_sources": true,
+      "no_duplicate_sources": true,
+      "has_verification": true,
+      "no_spacing_artifacts": true
+    },
+    "answer_preview": "The CDC recommends a single dose of respiratory syncytial virus (RSV) vaccine for all adults ages 75 and older, and for adults ages 60-74 who are at increased risk of severe RSV illness, such as those",
+    "source_count": 4,
+    "verified": true
+  },
+  {
+    "query": "bird flu H5N1 latest updates",
+    "status": "PASS",
+    "checks": {
+      "has_answer": true,
+      "no_sources_in_answer": true,
+      "no_leaked_refs": true,
+      "has_sources": true,
+      "no_duplicate_sources": true,
+      "has_verification": true,
+      "no_spacing_artifacts": true
+    },
+    "answer_preview": "As of the latest updates, there are currently no active infections of Highly Pathogenic Avian Influenza (HPAI) in California poultry flocks, however, California dairy cattle herds are still affected b",
+    "source_count": 2,
+    "verified": true
+  },
+  {
+    "query": "FDA approved weight loss drugs 2025",
+    "status": "PASS",
+    "checks": {
+      "has_answer": true,
+      "no_sources_in_answer": true,
+      "no_leaked_refs": true,
+      "has_sources": true,
+      "no_duplicate_sources": true,
+      "has_verification": true,
+      "no_spacing_artifacts": true
+    },
+    "answer_preview": "As of 2025, the FDA-approved weight loss drugs include:\n\n1. Bupropion/naltrexone (Contrave)\n2. Liraglutide (Saxenda)\n3. Orlistat (Alli, Xenical)\n4. Phentermine/topiramate (Qsymia)\n5. Phentermine (Adip",
+    "source_count": 5,
+    "verified": true
+  }
+]

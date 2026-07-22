@@ -62,4 +62,4 @@ def generate_metadata(chunk: dict) -> dict:
             "chunk_id": chunk["chunk_id"],
         }
     )
-    return metadata
+    return {k: v for k, v in metadata.items() if v is not None}

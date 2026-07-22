@@ -56,10 +56,11 @@ def generate_from_web(query: str, web_results: list[dict]) -> str:
     from app.websearch.prompt import WEB_SEARCH_PROMPT
 
     formatted_results = "\n\n".join(
-        f"Source: {r.get('title', 'Unknown')}\n"
+        f"--- Source [{i}] ---\n"
+        f"Title: {r.get('title', 'Unknown')}\n"
         f"URL: {r.get('url', '')}\n"
         f"Content: {r.get('content', '')}"
-        for r in web_results
+        for i, r in enumerate(web_results, 1)
     )
 
     prompt = WEB_SEARCH_PROMPT.format(query=query, results=formatted_results)

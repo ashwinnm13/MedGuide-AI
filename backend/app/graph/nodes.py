@@ -67,7 +67,7 @@ def verify_node(state: GraphState) -> dict:
         ]
 
     # Attach citations
-    cited_answer = attach_citations(answer, sources)
+    cited_answer, unique_sources = attach_citations(answer, sources)
 
     # Build context for verification from whichever source was used
     if route == "web" and web_results:
@@ -87,5 +87,5 @@ def verify_node(state: GraphState) -> dict:
     return {
         "verification": verification_result,
         "answer": cited_answer,
-        "sources": sources,
+        "sources": unique_sources,
     }

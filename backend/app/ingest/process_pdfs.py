@@ -14,7 +14,7 @@ def main():
     configure_logging()
     logger.info("Starting ingestion pipeline")
 
-    docs = load_pdfs()[:20]
+    docs = load_pdfs()
     for doc in docs:
         doc["text"] = clean_text(doc["text"])
 
