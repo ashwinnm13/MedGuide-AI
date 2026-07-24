@@ -2,6 +2,11 @@
 
 > **An evidence-based, medical-grade AI assistant that answers clinical questions using Retrieval-Augmented Generation (RAG), Hybrid Retrieval, LangGraph Multi-Agent Architecture, and Automated Evidence Verification.**
 
+## ✨ Interface
+
+<p align="center"> <img src="assets/ui.png" alt="MedGuide AI" width="100%" style="border-radius:18px;"> </p>
+
+
 ![Python](https://img.shields.io/badge/Python-3.11-blue)
 ![FastAPI](https://img.shields.io/badge/FastAPI-Backend-green)
 ![LangGraph](https://img.shields.io/badge/LangGraph-Multi--Agent-orange)
