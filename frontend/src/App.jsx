@@ -1,30 +1,43 @@
-import { useEffect, useState } from "react";
+import { Routes, Route, Navigate } from 'react-router-dom';
+import MainLayout from '@/layouts/MainLayout';
+import HomePage from '@/pages/HomePage';
 
 function App() {
-  const [status, setStatus] = useState("Checking backend...");
-
-  useEffect(() => {
-    fetch("http://localhost:8000/health")
-      .then((response) => response.json())
-      .then((data) => setStatus(data.status))
-      .catch(() => setStatus("Backend Offline"));
-  }, []);
-
   return (
-    <div
-      style={{
-        minHeight: "100vh",
-        display: "grid",
-        placeItems: "center",
-        fontFamily: "Arial",
-      }}
-    >
-      <div style={{ textAlign: "center" }}>
-        <h1>🩺 MedGuide AI</h1>
-        <h2>Backend Status</h2>
-        <p>{status}</p>
-      </div>
-    </div>
+    <MainLayout>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        {/* Placeholder routes for future navigation items */}
+        <Route path="/new" element={<Navigate to="/" replace />} />
+        <Route path="/recent" element={
+          <div className="flex items-center justify-center h-full text-slate-400">
+            Recent Conversations (Coming Soon)
+          </div>
+        } />
+        <Route path="/bookmarks" element={
+          <div className="flex items-center justify-center h-full text-slate-400">
+            Bookmarks (Coming Soon)
+          </div>
+        } />
+        <Route path="/reports" element={
+          <div className="flex items-center justify-center h-full text-slate-400">
+            Saved Reports (Coming Soon)
+          </div>
+        } />
+        <Route path="/guidelines" element={
+          <div className="flex items-center justify-center h-full text-slate-400">
+            Medical Guidelines Explorer (Coming Soon)
+          </div>
+        } />
+        <Route path="/settings" element={
+          <div className="flex items-center justify-center h-full text-slate-400">
+            Settings (Coming Soon)
+          </div>
+        } />
+        {/* Fallback */}
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
+    </MainLayout>
   );
 }
 
