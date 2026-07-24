@@ -115,31 +115,31 @@ export const SUGGESTION_CHIPS = [
 export const LOADING_STAGES = [
   {
     id: 'searching',
-    label: 'Searching Guidelines',
+    label: 'Guidelines Retrieved',
     message: 'Searching medical guidelines...',
     icon: 'Search',
   },
   {
     id: 'retrieving',
-    label: 'Retrieving Evidence',
+    label: 'Evidence Retrieved',
     message: 'Retrieving evidence...',
     icon: 'Database',
   },
   {
     id: 'verifying',
-    label: 'Verifying Evidence',
+    label: 'Evidence Verified',
     message: 'Validating citations...',
     icon: 'ShieldCheck',
   },
   {
     id: 'generating',
-    label: 'Generating Clinical Answer',
+    label: 'LLM Generated',
     message: 'Generating evidence-based answer...',
     icon: 'Sparkles',
   },
   {
     id: 'completed',
-    label: 'Completed',
+    label: 'Clinical Review Ready',
     message: 'Analysis complete',
     icon: 'CheckCircle2',
   },

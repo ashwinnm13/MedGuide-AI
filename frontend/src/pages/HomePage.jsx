@@ -106,28 +106,10 @@ export default function HomePage() {
       <div
         className={`
           transition-all duration-500 ease-out z-20 w-full max-w-3xl mx-auto
-          ${
-            isQueryActive
-              ? 'fixed bottom-6 left-1/2 -translate-x-1/2 px-4 w-full max-w-4xl lg:ml-[140px] xl:ml-0' // Adjusted for sidebar on large screens
-              : 'mt-auto'
-          }
+          ${isQueryActive ? 'mt-12' : 'mt-auto'}
         `}
-        style={
-          isQueryActive
-            ? {
-                // Adjusting center offset based on sidebar presence is tricky with purely CSS without knowing exact widths,
-                // Using a relative parent with sticky bottom or a fixed wrapper that respects layout padding is usually better.
-                // For simplicity in this demo, standard fixed positioning with max-width is used.
-              }
-            : {}
-        }
       >
         <div className="relative">
-          {/* Subtle gradient shadow behind search when active */}
-          {isQueryActive && (
-            <div className="absolute -inset-10 bg-gradient-to-t from-slate-50 via-slate-50/80 to-transparent pointer-events-none -z-10" />
-          )}
-
           <SearchBar
             ref={searchInputRef}
             value={inputValue}

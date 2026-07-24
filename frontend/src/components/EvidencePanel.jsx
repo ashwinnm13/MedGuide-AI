@@ -7,6 +7,7 @@ import { motion } from 'framer-motion';
 import { BookOpen, FileSearch } from 'lucide-react';
 import EvidenceCard from './EvidenceCard';
 import VerificationCard from './VerificationCard';
+import EvidenceChain from './EvidenceChain';
 import WebSourcesCard from './WebSourcesCard';
 import { EvidenceSkeleton } from './LoadingSkeleton';
 
@@ -51,6 +52,11 @@ export default function EvidencePanel({
             {/* Verification Card */}
             {verification && (
               <VerificationCard verification={verification} />
+            )}
+
+            {/* Evidence Chain Timeline */}
+            {sources.length > 0 && (
+              <EvidenceChain sources={sources} verified={verification?.supported === true} />
             )}
 
             {/* Local evidence sources */}

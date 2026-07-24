@@ -173,11 +173,15 @@ body {
 }
 
 /* ─── Markdown Content Styling ───────────────────────────────────── */
+.markdown-content {
+  max-width: 65ch; /* Optimal reading width */
+}
+
 .markdown-content h1 {
   font-size: 1.5rem;
   font-weight: 700;
   color: #0F172A;
-  margin: 1.5rem 0 0.75rem;
+  margin: 2rem 0 1rem;
   letter-spacing: -0.025em;
 }
 
@@ -185,7 +189,7 @@ body {
   font-size: 1.25rem;
   font-weight: 600;
   color: #1E293B;
-  margin: 1.25rem 0 0.5rem;
+  margin: 1.75rem 0 0.75rem;
   letter-spacing: -0.02em;
 }
 
@@ -193,29 +197,43 @@ body {
   font-size: 1.1rem;
   font-weight: 600;
   color: #334155;
-  margin: 1rem 0 0.5rem;
+  margin: 1.25rem 0 0.6rem;
 }
 
 .markdown-content p {
-  margin: 0.5rem 0;
-  line-height: 1.75;
+  margin: 0.75rem 0;
+  line-height: 1.8;
   color: #475569;
 }
 
 .markdown-content ul,
 .markdown-content ol {
   padding-left: 1.5rem;
-  margin: 0.5rem 0;
+  margin: 0.75rem 0;
 }
 
 .markdown-content li {
-  margin: 0.35rem 0;
-  line-height: 1.7;
+  margin: 0.5rem 0;
+  line-height: 1.8;
   color: #475569;
 }
 
 .markdown-content li::marker {
   color: #2563EB;
+}
+
+/* Custom styled lists for tabbed interface */
+.markdown-list-styled ul,
+.markdown-list-styled ol {
+  padding-left: 0;
+  margin: 0.75rem 0;
+  list-style: none;
+}
+
+.markdown-list-styled li {
+  margin: 0.75rem 0;
+  line-height: 1.8;
+  color: #475569;
 }
 
 .markdown-content strong {
@@ -240,7 +258,7 @@ body {
 .markdown-content blockquote {
   border-left: 3px solid #2563EB;
   padding: 0.5rem 1rem;
-  margin: 0.75rem 0;
+  margin: 1rem 0;
   background-color: #EFF6FF;
   border-radius: 0 8px 8px 0;
   color: #1E40AF;
@@ -248,12 +266,12 @@ body {
 
 .markdown-content a {
   color: #2563EB;
-  text-decoration: underline;
-  text-underline-offset: 2px;
+  text-decoration: none;
 }
 
 .markdown-content a:hover {
   color: #1D4ED8;
+  text-decoration: underline;
 }
 
 /* ─── Glassmorphism Utility ──────────────────────────────────────── */
@@ -268,4 +286,29 @@ body {
 ::selection {
   background-color: #BFDBFE;
   color: #1E3A8A;
+}
+
+/* ─── Superscript Citations ─────────────────────────────────────── */
+.citation-sup {
+  font-size: 0.65em;
+  font-weight: 700;
+  color: #2563EB;
+  cursor: pointer;
+  vertical-align: super;
+  margin-left: 1px;
+}
+
+.citation-sup:hover {
+  color: #1D4ED8;
+  text-decoration: underline;
+}
+
+/* ─── Scrollbar Hide (for tab bar) ──────────────────────────────── */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
 }
